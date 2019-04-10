@@ -1,1 +1,86 @@
+p.327 인공신경망
+Sklearn
+Tensorflow
+	Tf…
+	Linear regression
+	Logistic regression
+p.330
+p.343 ReLU 함수
 
+텐서플로의 자료구조
+	1. 상수(Constant)
+	2. 변수(Variable)
+	3. 심볼릭변수(placeholder)
+
+Session
+	- Tensorflow에서 실제 실행되는 환경
+	- Session() 함수는 operation 객체를 실행하고, tensor 객체(기본 데이터구조 / 연산 노드를 가리키는 객체라는 뜻에 근접)를 평가하기 위한 환경을 제공하는 객체
+	- 세션 사용이 끝난 후 tf.Session.close()를 호출하여 자원을 해제
+
+Run()
+	- 오퍼레이션 객체(tf.Operation)를 실행하거나  텐서 객체(tf.Tensor)의 값을 구하기 위한 메소드
+	- run 메소드에 전달된 텐서 객체를 계산하기 위해 필요한 오퍼레이션들이 있다면 먼저 계산된 후 원하는 텐서의 값이 출력
+
+writer = tf.summary.FileWriter('./logs', sess.graph)
+-> TensorBoard에 모든 Summary를 해당 경로에 저장, 이후 graph는 TensorBoard에서 작성 시작
+
+global_variables_initializer()
+	- 변수형은 그래프를 실행하기 전 먼저 초기화를 수행해야 해당 값이 변수에 지정
+	- 해당 함수를 통해 변수의 초기화 가능
+	- 일부분만 초기화할 경우 variables_initializer() 사용
+
+random_normal()
+	- 정규분포를 따르는 난수들로 이루어진 텐서
+EX) W = tf.Variable(tf.random_normal([2,1]), name='weight')
+       -> 2행 1열의 변수를 생성
+
+reduce_mean()
+	- 특정 차원을 제거하고 평균값을 구하는 함수
+	- 1차원에서는 평균값만 출력
+
+GradientDescentOptimizer(참고: https://icim.nims.re.kr/post/easyMath/70)
+	- 주어진 목적함수  f의 최솟값(minimum)을 찾아가는 알고리즘
+	- 초기값  x0을 임의로 설정, 적당한 Learning rate α 설정
+	xn+1:=xn−α⋅∇f(xn)
+	- 함수 f의 모양이 볼록 함수(convex)의 형태가 아닌 경우 global minimum이 아닌 local minimum으로  Xn이 수렴할 가능성 有
+	- Learning rate α 값이 큰 경우 최솟값으로  Xn이 수렴이 아니라 발산할 수 있다.
+	- Learning rate α 값이 작은 경우 수렴하는 속도가 지나치게 느릴 수 있다.
+
+실습 - GradientDescentOptimizer
+import tensorflow as tf
+
+xtrain = [1, 2, 3]
+ytrain = [1, 2, 3]
+
+# y =W * x + b
+W = tf.Variable(tf.random_normal([1]), name='weight')
+b = tf.Variable(tf.random_normal([1]), name='bias')
+
+hypothesis = xtrain * W + b
+cost = tf.reduce_mean(tf.square(hypothesis - ytrain))
+# optimizer
+train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
+
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+
+for s in range(2000):
+    _, cost_val, W_val, b_val =  sess.run([train, cost, W, b])
+    #print(cost_val, W_val, b_val)
+    if s % 20 == 0:
+        print(s,cost_val, W_val, b_val)
+
+Logistic Regression(참고: https://dongjoo-kim.tistory.com/11)
+	- 종속 변수 Y에 대해 결과를 True(1)와 False(0)로써 구분하도록 하는 독립변수 X와의 관계를 모델링한 회귀분석기법
+	Ex) 한 학생의 공부한 기간(Day), 공부한 시간(Study-hour), 잠을 잔 시간(Sleep-hour)과 같은 독립변수(X)가 존재할 때, 
+	해당 과목에 대한 Pass / No Pass(Y)의 기록들을 회귀 분석
+
+*TensorBoard 실행
+	1. Anaconda에서 Jupyter Notebook 실행
+	(base) C:\Users\Administrator> activate tensorflow
+	(tensorflow) C:\Users\Administrator> Jupyter Notebook
+	2. Jupyter Notebook에서 다음 문장 입력 및 실행
+	writer = tf.summary.FileWriter('./logs', sess.graph)
+	3. Anaconda를 하나 더 실행 후 
+	(base) C:\Users\Administrator> activate tensorflow
+(tensorflow) C:\Users\Administrator> tensorboard --logdir=C:\PythonTest3\20190410\logs

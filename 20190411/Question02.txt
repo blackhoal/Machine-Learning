@@ -1,0 +1,14 @@
+* sklearn datasets
+iris = datasets.load_iris()를 사용하여 
+k-nearest 사용하여 다음의 값을 입력하고 분류하시오.
+
+[9,3]
+
+
+* TestData.csv이용해서 K Nearest Neighbors 알고리즘을 사용해서 다음의 값(Height, Weight, Age, Class)을 입력하고 예측하시오.
+
+[1.90,80,40]
+
+
+* datasets.load_breast_cancer()을 이용하여 
+linear모델을 사용하여 정확도(accuracy)를 구하시오.

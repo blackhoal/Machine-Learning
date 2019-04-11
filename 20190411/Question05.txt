@@ -1,0 +1,10 @@
+* surprise모듈에서 제공하는 Dataset을 사용하여
+df = Dataset.load_builtin('ml-100k')
+id가 196번인 사용자에게 10개를 추천하시오.
+
+
+* Tensorflow를 사용하여 다음을 처리하시오.
+w = tf.Variable([0.5], dtype=tf.float32)
+b = tf.Variable([-0.5], dtype=tf.float32)
+-> Linear Regression을 정의하고 [1, 2, 3, 4] 입력이
+   된경우 예측하시오.

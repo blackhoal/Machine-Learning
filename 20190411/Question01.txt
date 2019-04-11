@@ -1,0 +1,13 @@
+* 제공된 salary.csv의 YearsExperience, Salary를 사용하여 Linear Regression 모델을 정의하시오.
+-> 그래프에 산점도를 표현하고, Regression직선을 출력하시오.
+
+* 다음의 데이터를 이용하여 Linear Regression을 정의하시오.
+- 그래프를 출력하고, x3를 입력하여 예측하시오.
+- trainset
+x2 = np.array([0,1,2,3,4,5,6,7,8,9])
+y2 = np.array([1,2,2,5,6,8,9,10,10,11])
+- testset
+x3 = np.array([1.5,2.5,3.5])
+
+* 다음의 데이터를 이용하여 Logistics Regression을 정의하시오. Diabetes.csv
+-> test_size를 0.2로 정의하고 테스트하시오.

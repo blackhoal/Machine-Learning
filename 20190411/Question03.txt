@@ -1,0 +1,12 @@
+* from sklearn.datasets import load_breast_cancer
+dataset = datasets.load_breast_cancer()
+X = dataset.data
+y = dataset.target
+
+데이터를 사용하여 
+- KNeighborsClassifier
+- SVM
+- DecisionTree
+- LogisticRegression
+
+각각의 accuracy_score 데이터를 임의적으로 만들어서 3가지를 비교해보시오.

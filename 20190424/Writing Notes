@@ -1,1 +1,24 @@
+Question 1. 
+* salary.csv를 입력받아 YearsExperience와 Salary를 사용하여 linear regression model을 생성하고 그래프를 출력하고 
+  임의의 값으로 테스트하시오.
+* weather.csv를 사용하여 MinTemp, MaxTemp를 사용하여 linear regression model을 생성하고 테스트하시오.
+* Diabetes.csv를 사용하여 Outcome을 예측하시오.(Logistics Regression)
 
+Question 2. 
+* datasets.load_iris()의 데이터에서 sepal.width, sepal.length를 사용하여 KNeighborsClassifier 모델을 정의하고,
+  9,3값이 들어간 경우, 예측하시오. (분류 0:Setosa, 1:Versicolour, 2:Virginica)
+* TestData.csv를 사용하여 1.94, 80, 20이 입력된 경우, 예측하시오.
+* datasets.load_brest_cancer()를 사용하여 모델을 정의하고, accuracy_score를 구하시오.
+* datasets.load_digits()를 사용하여 모델을 정의하고, accuracy_score를 구하시오.
+
+Question 3.
+* Diabets.csv데이터를 이용하여 모델을 정의하고 예측하고, Tree그래프를 출력하시오.(Decision Tree)
+* Car.csv데이터를 이용하여 모델을 정의하고 예측하고, Tree그래프를 출력하시오.(Decision Tree)
+* Diabets.csv데이터를 사용하여 모델을 정의하고 예측하고, Confusion_matrix값을 구하시오.(Logistics regression)
+* Diabets.csv데이터를 사용하여 여러가지 모델을 정의하고 각각의 모델의 accuacy를 비교하시오.
+  Logistic regression, KNeighbors, DecisionTree
+  
+Question 4. 
+* train.csv, test.csv를 사용하여 모델을 정의하고, 생존 유무를 예측하시오.
+* Sample01-k-means.csv를 사용하여 모델을 정의(k-means)하고 elbow함수를 그래프로 출력하시오.
+* MNIST를 tensorflow를 적용하여 데이터를 확인하시오.
